@@ -361,9 +361,13 @@ class AbstractChosen
     """
 
   get_no_results_html: (terms) ->
+    node = document.createElement('div')
+    node.innerText = terms
+    escapedTerms = node.innerHTML
+
     """
       <li class="no-results">
-        #{@results_none_found} <span>#{terms}</span>
+        #{@results_none_found} <span>#{escapedTerms}</span>
       </li>
     """
 
@@ -384,4 +388,3 @@ class AbstractChosen
   @default_multiple_text: "Select Some Options"
   @default_single_text: "Select an Option"
   @default_no_result_text: "No results match"
-
